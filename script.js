@@ -88,10 +88,6 @@ function didGameEnd() {
 }
 
 gameLoop();
-
-
-
-
 function resetGame() {
     // Reset the snake to its initial state
     snake = [{ x: 10, y: 10 }];
