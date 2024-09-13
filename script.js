@@ -88,3 +88,19 @@ function didGameEnd() {
 }
 
 gameLoop();
+
+
+
+
+function resetGame() {
+    // Reset the snake to its initial state
+    snake = [{ x: 10, y: 10 }];
+    dx = 0;
+    dy = 0;
+    score = 0;
+    food = spawnFood();
+}
+
+function didGameEnd() {
+    // Check if the snake has collided with itself
+   
