@@ -12,17 +12,15 @@ let score = 0;
 document.addEventListener("keydown", changeDirection);
 
 function gameLoop() {
-    if (didGameEnd()) {
-        resetGame(); // Reset the game and keep the loop going
-    } else {
-        setTimeout(() => {
-            clearCanvas();
-            drawFood();
-            moveSnake();
-            drawSnake();
-            gameLoop(); // Continue the loop
-        }, 100);
-    }
+    if (didGameEnd()) return;
+
+    setTimeout(() => {
+        clearCanvas();
+        drawFood();
+        moveSnake();
+        drawSnake();
+        gameLoop();
+    }, 100);
 }
 
 function clearCanvas() {
@@ -89,18 +87,4 @@ function didGameEnd() {
     return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
 }
 
-function resetGame() {
-    // Reset snake position, size, direction, and score
-    snake = [{ x: 10, y: 10 }];
-    dx = 0;
-    dy = 0;
-    score = 0;
-    food = spawnFood(); // Respawn food
-    // Continue the game loop after reset
-    clearCanvas();
-    drawSnake();
-    drawFood();
-}
-
-// Start the game loop when the page loads
 gameLoop();
