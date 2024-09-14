@@ -12,7 +12,10 @@ let score = 0;
 document.addEventListener("keydown", changeDirection);
 
 function gameLoop() {
-    if (didGameEnd()) return;
+    if (didGameEnd()) {
+        alert("Game Over!"); // Alert the player that the game has ended
+        return; // Stop the game loop
+    }
 
     setTimeout(() => {
         clearCanvas();
@@ -67,24 +70,4 @@ function changeDirection(event) {
     } else if (key === 39 && dx === 0) { // right arrow
         dx = 1;
         dy = 0;
-    } else if (key === 40 && dy === 0) { // down arrow
-        dx = 0;
-        dy = 1;
-    }
-}
-
-function didGameEnd() {
-    for (let i = 4; i < snake.length; i++) {
-        if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
-            return true;
-        }
-    }
-    const hitLeftWall = snake[0].x < 0;
-    const hitRightWall = snake[0].x >= canvasSize;
-    const hitTopWall = snake[0].y < 0;
-    const hitBottomWall = snake[0].y >= canvasSize;
-
-    return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
-}
-
-gameLoop();
+    } else if (key === 40 && dy === 0) { // d
